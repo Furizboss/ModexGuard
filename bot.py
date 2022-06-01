@@ -20,7 +20,8 @@ async def help(ctx):
     emb = discord.Embed(color=ctx.author.color, title="Информация о командах")
 
     emb.add_field(name=f"{settings['prefix']}help: ", value="Информация", inline=False)
-    emb.add_field(name="С тебя хватит ", value="С тебя хватит", inline=False)
+    emb.add_field(name=f"{settings['prefix']}serverinfo: ", value="Информация о сервере", inline=False)
+    emb.add_field(name=f"{settings['prefix']}myroles: ", value="Узнать свои роли", inline=False)
 
     await ctx.send(embed=emb)
 
