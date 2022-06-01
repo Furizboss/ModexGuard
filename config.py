@@ -5,4 +5,4 @@ settings = {
     'prefix': '-'
 }
 
-admin = ['id role']
+admin = [id role]
