@@ -20,7 +20,6 @@ async def on_ready():
 
 @bot.command()
 async def help(ctx):
-    PREFIX = 's!'
     emb = discord.Embed(color=ctx.author.color, title="Информация о командах")
 
     emb.add_field(name=f"{settings['prefix']}help: ", value="Информация", inline=False)
@@ -63,8 +62,8 @@ async def _roles(ctx):
         x += f' - `{result}` -'
 
     embed = discord.Embed(
-        description = f"{member.mention} список твоих ролей:\n\n{x}",
-        color = ctx.author.color, )
+        description=f"{member.mention} список твоих ролей:\n\n{x}",
+        color=ctx.author.color, )
     embed.set_thumbnail(url=str(ctx.message.author.avatar_url))
     await ctx.send(embed=embed)
 
