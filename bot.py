@@ -17,12 +17,51 @@ async def on_ready():
 @bot.command()
 async def help(ctx):
     PREFIX = 's!'
-    emb1 = discord.Embed(color=discord.Colour.from_rgb(0, 204, 255), title="Информация о командах")
+    emb = discord.Embed(color=ctx.author.color, title="Информация о командах")
 
-    emb1.add_field(name=f"{PREFIX}help: ", value="Информация", inline=False)
-    emb1.add_field(name="С тебя хватит ", value="С тебя хватит", inline=False)
+    emb.add_field(name=f"{settings['prefix']}help: ", value="Информация", inline=False)
+    emb.add_field(name="С тебя хватит ", value="С тебя хватит", inline=False)
 
-    await ctx.send(embed=emb1)
+    await ctx.send(embed=emb)
+
+
+@bot.command(aliases=['serverinfo', 'server'])
+async def _serverinfo(ctx):
+    embed = discord.Embed(
+        description=f'**Информация о сервере** **{ctx.guild.name}**\n'
+                    f'\n**Участники:**\n'
+                    f'Всего: **{ctx.guild.member_count}**\n'
+                    f'\n**Каналы:**\n'
+                    f':speech_balloon: Текствые: **{len(ctx.guild.text_channels)}**\n'
+                    f':mega: Голосовые: **{len(ctx.guild.voice_channels)}**\n'
+                    f':books: Категории: **{len(ctx.guild.categories)}**\n'
+                    f'\n**Владелец:**\n'
+                    f'{ctx.guild.owner}\n'
+                    f'\n**Уровень проверки:**\n'
+                    f'{ctx.guild.verification_level}\n'
+                    f'**Дата создания:**\n{ctx.guild.created_at.strftime("%d.%m.%Y")}\n',
+        color=ctx.author.color, )
+    embed.set_footer(text=f'ID: {ctx.guild.id}')
+    embed.set_thumbnail(url=str(ctx.guild.icon_url))
+    await ctx.send(embed=embed)
+
+
+@bot.command(aliases=['myroles', 'roles'])
+async def _roles(ctx):
+    member = ctx.message.author
+    member_roles = member.roles
+    x = ''
+    for i in member_roles:
+        element = str(i)
+        element = element.replace('@', '')
+        result = f'@{element}'
+        x += f' - `{result}` -'
+
+    embed = discord.Embed(
+        description = f"{member.mention} список твоих ролей:\n\n{x}",
+        color = ctx.author.color, )
+    embed.set_thumbnail(url=str(ctx.message.author.avatar_url))
+    await ctx.send(embed=embed)
 
 
 bot.run(settings['token'])
