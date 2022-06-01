@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from config import settings
+from asyncio import sleep
 
 intents = discord.Intents.all()
 intents.members = True
@@ -10,8 +11,11 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="гей порно"))
     print("Готов к труду и обороне")
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="гей порно"))
+    await sleep(5)
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="хуйню"))
+    await sleep(5)
 
 
 @bot.command()
