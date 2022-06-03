@@ -4,6 +4,7 @@ from asyncio import sleep
 import random
 
 from config import settings
+from helpCommands import Help
 from info import Info
 from fun import Fun
 
@@ -32,20 +33,7 @@ async def on_ready():
         await sleep(5)
 
 
-@bot.command()
-async def help(ctx):
-    emb = discord.Embed(color=ctx.author.color, title="Информация о командах")
-
-    emb.add_field(name=f"{settings['prefix']}help: ", value="Информация", inline=False)
-    emb.add_field(name=f"{settings['prefix']}serverinfo: ", value="Информация о сервере", inline=False)
-    emb.add_field(name=f"{settings['prefix']}userinfo: ", value="Информация о пользователе", inline=False)
-    emb.add_field(name=f"{settings['prefix']}roles: ", value="Узнать роли", inline=False)
-    emb.add_field(name=f"{settings['prefix']}coin: ", value="Подкинуть монетку", inline=False)
-    emb.add_field(name=f"{settings['prefix']}howdy: ", value="Рандомная фотка Хауди Хо", inline=False)
-
-    await ctx.send(embed=emb)
-
-
+bot.add_cog(Help(bot))
 bot.add_cog(Info(bot))
 bot.add_cog(Fun(bot))
 bot.run(settings['token'])
