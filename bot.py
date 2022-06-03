@@ -4,9 +4,9 @@ from asyncio import sleep
 import random
 
 from config import settings
-from helpCommands import Help
-from info import Info
-from fun import Fun
+from systemFiles.helpCommands import Help
+from systemFiles.info import Info
+from systemFiles.fun import Fun
 
 intents = discord.Intents.all()
 intents.members = True
