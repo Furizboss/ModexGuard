@@ -5,6 +5,7 @@ import random
 
 from config import settings
 from info import Info
+from fun import Fun
 
 intents = discord.Intents.all()
 intents.members = True
@@ -39,9 +40,12 @@ async def help(ctx):
     emb.add_field(name=f"{settings['prefix']}serverinfo: ", value="Информация о сервере", inline=False)
     emb.add_field(name=f"{settings['prefix']}userinfo: ", value="Информация о пользователе", inline=False)
     emb.add_field(name=f"{settings['prefix']}roles: ", value="Узнать роли", inline=False)
+    emb.add_field(name=f"{settings['prefix']}coin: ", value="Подкинуть монетку", inline=False)
+    emb.add_field(name=f"{settings['prefix']}howdy: ", value="Рандомная фотка Хауди Хо", inline=False)
 
     await ctx.send(embed=emb)
 
 
 bot.add_cog(Info(bot))
+bot.add_cog(Fun(bot))
 bot.run(settings['token'])
