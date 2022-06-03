@@ -37,7 +37,8 @@ async def help(ctx):
 
     emb.add_field(name=f"{settings['prefix']}help: ", value="Информация", inline=False)
     emb.add_field(name=f"{settings['prefix']}serverinfo: ", value="Информация о сервере", inline=False)
-    emb.add_field(name=f"{settings['prefix']}myroles: ", value="Узнать свои роли", inline=False)
+    emb.add_field(name=f"{settings['prefix']}userinfo: ", value="Информация о пользователе", inline=False)
+    emb.add_field(name=f"{settings['prefix']}roles: ", value="Узнать роли", inline=False)
 
     await ctx.send(embed=emb)
 

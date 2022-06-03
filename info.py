@@ -31,9 +31,13 @@ class Info(commands.Cog):
 
 
     @commands.command(aliases=['myroles', 'roles'])
-    async def _roles(self, ctx):
-        member = ctx.message.author
-        member_roles = member.roles
+    async def _roles(self, ctx, member:discord.Member = None, guild: discord.Guild = None):
+        if member == None:
+            userPrefix = ctx.message.author
+        else:
+            userPrefix = member
+
+        member_roles = userPrefix.roles
         member_roles.pop(0)
         member_roles.reverse()
         x = ''
@@ -46,7 +50,38 @@ class Info(commands.Cog):
                 x += f'- {result} -'
 
         embed = discord.Embed(
-            description=f"{member.mention} список твоих ролей:\n\n{x}",
+            description=f"{userPrefix.mention} список ролей:\n\n{x}",
             color=ctx.author.color, )
-        embed.set_thumbnail(url=str(ctx.message.author.avatar_url))
+        embed.set_thumbnail(url=str(userPrefix.avatar_url))
+        await ctx.send(embed=embed)
+
+
+    @commands.command(aliases=['user', 'userinfo'])
+    async def _userinfo(self, ctx, member:discord.Member = None, guild: discord.Guild = None):
+        if member == None:
+            userPrefix = ctx.message.author
+        else:
+            userPrefix = member
+
+        t = userPrefix.status
+        if t == discord.Status.online:
+            d = ":green_circle: В сети"
+        if t == discord.Status.offline:
+            d = ":black_circle: Не в сети"
+        if t == discord.Status.idle:
+            d = ":crescent_moon: Не активен"
+        if t == discord.Status.dnd:
+            d = ":no_entry: Не беспокоить"
+    
+        value1 = userPrefix.activity
+
+        embed = discord.Embed(
+            description=f'**Информация о пользователе**\n'
+                        f'\n**Имя: **{userPrefix.display_name}\n'
+                        f'**Статус: **{d}\n'
+                        f'**Роль на сервере: **{userPrefix.top_role.mention}\n'
+                        f'**Дата создания: **{userPrefix.created_at.strftime("%d.%m.%Y")}\n',
+            color=ctx.author.color, )
+        embed.set_footer(text=f'ID: {userPrefix.id}')
+        embed.set_thumbnail(url=str(userPrefix.avatar_url))
         await ctx.send(embed=embed)
