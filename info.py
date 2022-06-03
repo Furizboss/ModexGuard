@@ -8,10 +8,13 @@ class Info(commands.Cog):
 
     @commands.command(aliases=['serverinfo', 'server'])
     async def _serverinfo(self, ctx):
+        bots = len(([member for member in ctx.guild.members if member.bot]))
         embed = discord.Embed(
             description=f'**{ctx.guild.name}**\n'
                         f'\n**Участники:**\n'
-                        f'Всего: **{ctx.guild.member_count}**\n'
+                        f':busts_in_silhouette: Всего: **{ctx.guild.member_count}**\n'
+                        f':bust_in_silhouette: Людей: **{ctx.guild.member_count - bots}**\n'
+                        f':robot: Ботов: **{bots}**\n'
                         f'\n**Каналы:**\n'
                         f':speech_balloon: Текствые: **{len(ctx.guild.text_channels)}**\n'
                         f':mega: Голосовые: **{len(ctx.guild.voice_channels)}**\n'
@@ -25,6 +28,7 @@ class Info(commands.Cog):
         embed.set_footer(text=f'ID: {ctx.guild.id}')
         embed.set_thumbnail(url=str(ctx.guild.icon_url))
         await ctx.send(embed=embed)
+
 
     @commands.command(aliases=['myroles', 'roles'])
     async def _roles(self, ctx):
