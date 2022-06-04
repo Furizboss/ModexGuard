@@ -5,6 +5,7 @@ import random
 
 from config import settings
 from systemFiles.helpCommands import Help
+from systemFiles.moderation import Moder
 from systemFiles.info import Info
 from systemFiles.fun import Fun
 
@@ -33,6 +34,7 @@ async def on_ready():
         await sleep(5)
 
 
+bot.add_cog(Moder(bot))
 bot.add_cog(Help(bot))
 bot.add_cog(Info(bot))
 bot.add_cog(Fun(bot))

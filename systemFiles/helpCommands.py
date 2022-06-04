@@ -9,22 +9,28 @@ class Help(commands.Cog):
     @commands.command(aliases=['help', 'помощь'])
     async def _help(self, ctx, helpCommand=None):
         prefix = settings['prefix']
+        botId = discord.utils.get(ctx.guild.members, id = settings['id'])
 
+        # общий help
         if helpCommand == None or helpCommand == 'help':
             embed = discord.Embed(
                 description=f'**Информация о командах:**\n'
                             f'\nВы можете получить детальную справку по каждой команде\n'
                             f'Например: `{prefix}help serverinfo`\n'
                             f'\n:bar_chart: Информация\n'
-                            f'`{prefix}help` `{prefix}serverinfo` `{prefix}userinfo` `{prefix}roles`'
+                            f'`{prefix}help` `{prefix}serverinfo` `{prefix}userinfo` `{prefix}roles` `{prefix}avatar`'
                             f'\n:joystick: Развлечение\n'
-                            f'`{prefix}coin` `{prefix}howdy`\n'
-                            f'⠀',
+                            f'`{prefix}coin` `{prefix}howdy`'
+                            f'\n:toolbox: Модерация\n'
+                            f'`{prefix}ban` `{prefix}kick` `{prefix}clear`'
+                            f'\n⠀',
                 color=ctx.author.color)
-            embed.set_thumbnail(url="https://i.ibb.co/60CZrcf/1.png")
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/jbMm1Ff/19a97a99b40d6ec9efc75a3a3a17b632.png")
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
         
+
+        # помощь раздела информации
         elif helpCommand == 'serverinfo' or helpCommand == 'server':
             embed = discord.Embed(
                 description=f'**Информация о командe `{prefix}serverinfo`:**\n'
@@ -34,8 +40,8 @@ class Help(commands.Cog):
                             f'`{prefix}serverinfo`'
                             f'⠀',
                 color=ctx.author.color)
-            embed.set_thumbnail(url="https://i.ibb.co/60CZrcf/1.png")
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/jbMm1Ff/19a97a99b40d6ec9efc75a3a3a17b632.png")
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'userinfo' or helpCommand == 'user':
@@ -49,10 +55,12 @@ class Help(commands.Cog):
                             f'`{prefix}userinfo <@пользователь>`\n'
                             f'⠀',
                 color=ctx.author.color)
-            embed.set_thumbnail(url="https://i.ibb.co/60CZrcf/1.png")
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/jbMm1Ff/19a97a99b40d6ec9efc75a3a3a17b632.png")
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
+
+        # помощь раздела развлечение
         elif helpCommand == 'roles' or helpCommand == 'myroles':
             embed = discord.Embed(
                 description=f'**Информация о командe `{prefix}roles`:**\n'
@@ -63,8 +71,8 @@ class Help(commands.Cog):
                             f'`{prefix}roles <@пользователь>`\n'
                             f'⠀',
                 color=ctx.author.color)
-            embed.set_thumbnail(url="https://i.ibb.co/60CZrcf/1.png")
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/jbMm1Ff/19a97a99b40d6ec9efc75a3a3a17b632.png")
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'coin':
@@ -75,8 +83,8 @@ class Help(commands.Cog):
                             f'`{prefix}coin`\n'
                             f'⠀',
                 color=ctx.author.color)
-            embed.set_thumbnail(url="https://i.ibb.co/60CZrcf/1.png")
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/jbMm1Ff/19a97a99b40d6ec9efc75a3a3a17b632.png")
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'howdy' or helpCommand == 'howdyho':
@@ -88,9 +96,51 @@ class Help(commands.Cog):
                             f'`{prefix}howdyho`\n'
                             f'⠀',
                 color=ctx.author.color)
-            embed.set_thumbnail(url="https://i.ibb.co/60CZrcf/1.png")
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/jbMm1Ff/19a97a99b40d6ec9efc75a3a3a17b632.png")
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
+
+
+        # помощь раздела Модерирование
+        elif helpCommand == 'ban':
+            embed = discord.Embed(
+                description=f'**Информация о командe `{prefix}ban`:**\n'
+                            f'\nКоманда позволяет забанить пользователя на сервере\n'
+                            f'\nКоманда приминяется с аргументом:\n'
+                            f'`{prefix}ban <участник>`\n'
+                            f'`{prefix}ban <участник> <причина>`\n'
+                            f'⠀',
+                color=ctx.author.color)
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            await ctx.send(embed=embed)
+
+        elif helpCommand == 'kick':
+            embed = discord.Embed(
+                description=f'**Информация о командe `{prefix}kick`:**\n'
+                            f'\nКоманда позволяет увыгнать пользователя с сервера\n'
+                            f'\nКоманда приминяется с аргументом:\n'
+                            f'`{prefix}kick <участник>`\n'
+                            f'`{prefix}kick <участник> <причина>`\n'
+                            f'⠀',
+                color=ctx.author.color)
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            await ctx.send(embed=embed)
+            
+        elif helpCommand == 'cls' or helpCommand == 'clear':
+            embed = discord.Embed(
+                description=f'**Информация о командe `{prefix}clear`:**\n'
+                            f'\nКоманда позволяет удалить сообщения в канале\n'
+                            f'\nКоманда приминяется с аргументом:\n'
+                            f'`{prefix}cls <количество сообщений>`\n'
+                            f'`{prefix}clear <количество сообщений>`\n'
+                            f'⠀',
+                color=ctx.author.color)
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            await ctx.send(embed=embed)
+
 
         else:
             await ctx.send('Упс.. Я не могу найти информацию о такой команде')
