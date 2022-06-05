@@ -18,7 +18,7 @@ class Moder(commands.Cog):
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member:discord.Member = None, reason = None):
         if member == None:
-            await ctx.send('Отметьте участник для бана как аргумент')
+            await ctx.send('Отметьте участника для бана как аргумент')
         else:
             await member.ban(reason=reason)
 
@@ -27,7 +27,17 @@ class Moder(commands.Cog):
     @commands.has_permissions(ban_members=True)
     async def kick(self, ctx, member:discord.Member = None, reason = None):
         if member == None:
-            await ctx.send('Отметьте участник для бана как аргумент')
+            await ctx.send('Отметьте участника для изгнания как аргумент')
         else:
             await member.kick(reason=reason)
             await ctx.send(f'{member} был выгнан с сервера!')
+
+
+    @commands.command()
+    @commands.has_permissions(manage_channels=True)
+    async def slowmode(self, ctx, seconds:int = None):
+        if seconds == None:
+            await ctx.send('Отметьте время медленого режима как аргумент')
+        else:
+            await ctx.channel.edit(slowmode_delay=seconds)
+            await ctx.send(f"Задержка в этом канале установленно на {seconds} секунд!")

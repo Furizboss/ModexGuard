@@ -19,10 +19,10 @@ class Help(commands.Cog):
                             f'Например: `{prefix}help serverinfo`\n'
                             f'\n:bar_chart: Информация\n'
                             f'`{prefix}help` `{prefix}serverinfo` `{prefix}userinfo` `{prefix}roles` `{prefix}avatar`'
+                            f'\n:toolbox: Модерация\n'
+                            f'`{prefix}ban` `{prefix}kick` `{prefix}clear` `{prefix}slowmode`'
                             f'\n:joystick: Развлечение\n'
                             f'`{prefix}coin` `{prefix}howdy`'
-                            f'\n:toolbox: Модерация\n'
-                            f'`{prefix}ban` `{prefix}kick` `{prefix}clear`'
                             f'\n⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
@@ -141,6 +141,17 @@ class Help(commands.Cog):
             embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
+        elif helpCommand == 'slowmode':
+            embed = discord.Embed(
+                description=f'**Информация о командe `{prefix}slowmode`:**\n'
+                            f'\nКоманда позволяет установить медленный режим в канале\n'
+                            f'\nКоманда приминяется с аргументом:\n'
+                            f'`{prefix}slowmode < время задержки >`\n'
+                            f'⠀',
+                color=ctx.author.color)
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            await ctx.send(embed=embed)
 
         else:
             await ctx.send('Упс.. Я не могу найти информацию о такой команде')
