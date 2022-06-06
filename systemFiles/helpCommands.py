@@ -22,7 +22,7 @@ class Help(commands.Cog):
                             f'\n:toolbox: Модерация\n'
                             f'`{prefix}ban` `{prefix}kick` `{prefix}clear` `{prefix}slowmode`'
                             f'\n:joystick: Развлечение\n'
-                            f'`{prefix}coin` `{prefix}howdy`'
+                            f'`{prefix}coin` `{prefix}howdy` `{prefix}ben` `{prefix}nsfw`'
                             f'\n⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
@@ -59,8 +59,6 @@ class Help(commands.Cog):
             embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
-
-        # помощь раздела развлечение
         elif helpCommand == 'roles' or helpCommand == 'myroles':
             embed = discord.Embed(
                 description=f'**Информация о командe `{prefix}roles`:**\n'
@@ -75,6 +73,21 @@ class Help(commands.Cog):
             embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
+        elif helpCommand == 'avatar':
+            embed = discord.Embed(
+                description=f'**Информация о командe `{prefix}avatar`:**\n'
+                            f'\nКоманда позволяет получить аватарку пользователя\n'
+                            f'\nКоманда приминяется как с аргументом так и без:\n'
+                            f'`{prefix}avatar`\n'
+                            f'`{prefix}avatar <@пользователь>`\n'
+                            f'⠀',
+                color=ctx.author.color)
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            await ctx.send(embed=embed)
+
+
+        # помощь раздела развлечение
         elif helpCommand == 'coin':
             embed = discord.Embed(
                 description=f'**Информация о командe `{prefix}coin`:**\n'
@@ -94,6 +107,31 @@ class Help(commands.Cog):
                             f'\nКоманда приминяется без аргумента:\n'
                             f'`{prefix}howdy`\n'
                             f'`{prefix}howdyho`\n'
+                            f'⠀',
+                color=ctx.author.color)
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            await ctx.send(embed=embed)
+
+        elif helpCommand == 'ben':
+            embed = discord.Embed(
+                description=f'**Информация о командe `{prefix}ben`:**\n'
+                            f'\nКоманда позволяет получить ответ на вопрос от Бена\n'
+                            f'\nКоманда приминяется с аргументом:\n'
+                            f'`{prefix}ben <вопрос>`\n'
+                            f'⠀',
+                color=ctx.author.color)
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            await ctx.send(embed=embed)
+
+        elif helpCommand == 'nsfw':
+            embed = discord.Embed(
+                description=f'**Информация о командe `{prefix}nsfw`:**\n'
+                            f'\nКоманда позволяет получить nsfw аниме фото\n'
+                            f':warning: Команду можно применить только в NSFW чатах\n'
+                            f'\nКоманда приминяется без аргумента:\n'
+                            f'`{prefix}nsfw`\n'
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
