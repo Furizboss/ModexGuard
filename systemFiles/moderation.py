@@ -24,7 +24,7 @@ class Moder(commands.Cog):
 
 
     @commands.command()
-    @commands.has_permissions(ban_members=True)
+    @commands.has_permissions(kick_members=True)
     async def kick(self, ctx, member:discord.Member = None, reason = None):
         if member == None:
             await ctx.send('Отметьте участника для изгнания как аргумент')
