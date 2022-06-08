@@ -52,3 +52,11 @@ class Fun(commands.Cog):
         emb = discord.Embed(title = ":underage: NSFW", color=ctx.author.color)
         emb.set_image(url = random.choice(imgUrlNsfw))
         await ctx.send(embed = emb)
+
+
+    @commands.command()
+    async def ping(self, ctx):
+        embed = discord.Embed(
+            description = f'**Pong**',
+            color=ctx.author.color)
+        await ctx.send(embed=embed)
