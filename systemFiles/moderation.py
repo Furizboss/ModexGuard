@@ -5,6 +5,7 @@ class Moder(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    # Очистка чата
     @commands.command(aliases=['clear', 'cls'])
     @commands.has_permissions(manage_messages=True)
     async def _clear(self, ctx, amount=None):
@@ -14,6 +15,7 @@ class Moder(commands.Cog):
             await ctx.channel.purge(limit=int(amount))
 
     
+    # Бан юзеров
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member:discord.Member = None, reason = None):
@@ -23,6 +25,7 @@ class Moder(commands.Cog):
             await member.ban(reason=reason)
 
 
+    # Кик участников
     @commands.command()
     @commands.has_permissions(kick_members=True)
     async def kick(self, ctx, member:discord.Member = None, reason = None):
@@ -33,6 +36,7 @@ class Moder(commands.Cog):
             await ctx.send(f'{member} был выгнан с сервера!')
 
 
+    # Установка медленного режима
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def slowmode(self, ctx, seconds:int = None):

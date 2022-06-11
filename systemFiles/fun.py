@@ -7,6 +7,7 @@ class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    # Подбросить монетку
     @commands.command()
     async def coin(self, ctx):
         x = random.randint(0, 1)
@@ -21,6 +22,7 @@ class Fun(commands.Cog):
         await ctx.send(embed=embed)
 
 
+    # Рандомное фото Хауди Хо
     @commands.command(aliases=['howdy', 'howdyho'])
     async def _howdy(self, ctx):
         imgUrl = [ "https://i.ibb.co/Rykx1ZJ/1.png", "https://i.ibb.co/FWqhmy5/2.jpg", "https://i.ibb.co/phhGPhk/3.jpg",
@@ -33,6 +35,7 @@ class Fun(commands.Cog):
         await ctx.send(embed = emb)
     
 
+    # Говорящий бен, но не разговаривает
     @commands.command()
     async def ben(self, ctx, Question = None):
         answer = ['Yes', 'No', 'Ho-ho-ho']
@@ -46,6 +49,7 @@ class Fun(commands.Cog):
             await ctx.send(embed=embed)
 
     
+    # Рандомное фото Nsfw 
     @commands.command()
     @commands.is_nsfw()
     async def nsfw(self, ctx):
@@ -54,6 +58,7 @@ class Fun(commands.Cog):
         await ctx.send(embed = emb)
 
 
+    # Ping - pong
     @commands.command()
     async def ping(self, ctx):
         embed = discord.Embed(

@@ -15,6 +15,7 @@ bot = commands.Bot(command_prefix=settings['prefix'], intents=intents)
 bot.remove_command('help')
 
 
+# запуск бота
 @bot.event
 async def on_ready():
     print("Готов к труду и обороне")

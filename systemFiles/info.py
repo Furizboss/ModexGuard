@@ -6,6 +6,7 @@ class Info(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    # Информация о сервере
     @commands.command(aliases=['serverinfo', 'server'])
     async def _serverinfo(self, ctx):
         bots = len(([member for member in ctx.guild.members if member.bot]))
@@ -30,6 +31,7 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
 
+    # Информация о ролях пользователя
     @commands.command(aliases=['myroles', 'roles'])
     async def _roles(self, ctx, member:discord.Member = None, guild: discord.Guild = None):
         if member == None:
@@ -56,6 +58,7 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
 
+    # Информация о пользователя
     @commands.command(aliases=['user', 'userinfo'])
     async def _userinfo(self, ctx, member:discord.Member = None, guild: discord.Guild = None):
         if not member:
@@ -85,6 +88,7 @@ class Info(commands.Cog):
         await ctx.send(embed=embed)
 
 
+    # Аватарка пользователя
     @commands.command()
     async def avatar(self, ctx, member:discord.Member = None):
         if member == None:
