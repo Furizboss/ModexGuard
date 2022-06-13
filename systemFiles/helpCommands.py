@@ -20,7 +20,7 @@ class Help(commands.Cog):
                             f'\n:bar_chart: Информация\n'
                             f'`{prefix}help` `{prefix}serverinfo` `{prefix}userinfo` `{prefix}roles` `{prefix}avatar`'
                             f'\n:toolbox: Модерация\n'
-                            f'`{prefix}ban` `{prefix}kick` `{prefix}clear` `{prefix}slowmode`'
+                            f'`{prefix}ban` `{prefix}kick` `{prefix}clear` `{prefix}slowmode` `{prefix}mute`'
                             f'\n:joystick: Развлечение\n'
                             f'`{prefix}coin` `{prefix}howdy` `{prefix}ben` `{prefix}nsfw` `{prefix}ping`'
                             f'\n⠀',
@@ -196,12 +196,27 @@ class Help(commands.Cog):
                 description=f'**Информация о командe `{prefix}slowmode`:**\n'
                             f'\nКоманда позволяет установить медленный режим в канале\n'
                             f'\nКоманда приминяется с аргументом:\n'
-                            f'`{prefix}slowmode < время задержки >`\n'
+                            f'`{prefix}slowmode <время задержки>`\n'
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
             embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
+
+        elif helpCommand == 'mute':
+            embed = discord.Embed(
+                description=f'**Информация о командe `{prefix}mute`:**\n'
+                            f'\nКоманда позволяет замьютить участника на сервере\n'
+                            f':warning: Команду работает только если у everyone отключены все права\n'
+                            f'\nКоманда приминяется с аргументом:\n'
+                            f'`{prefix}mute <участник>`\n'
+                            f'`{prefix}mute <участник> <время в секундах>`\n'
+                            f'⠀',
+                color=ctx.author.color)
+            embed.set_thumbnail(url=botId.avatar_url)
+            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            await ctx.send(embed=embed)
+
 
         else:
             await ctx.send('Упс.. Я не могу найти информацию о такой команде')
