@@ -1,3 +1,4 @@
+import asyncio
 import discord
 from discord.ext import commands
 
@@ -45,3 +46,22 @@ class Moder(commands.Cog):
         else:
             await ctx.channel.edit(slowmode_delay=seconds)
             await ctx.send(f"Задержка в этом канале установленно на {seconds} секунд!")
+
+
+    # Мьют участников
+    @commands.command()
+    @commands.has_permissions(manage_roles=True)
+    async def mute(self, ctx, member:discord.Member = None, time = None):
+        if member == None:
+            await ctx.send('Отметьте участника для мьюта как аргумент')
+        else:
+            await ctx.guild.create_role(name="MG-muted", permissions=discord.Permissions(permissions=1024))
+            mute_role = discord.utils.get(ctx.guild.roles, name="MG-muted")
+            await member.add_roles(mute_role)
+
+            if time == None:
+                await ctx.send(f"{member.mention} был замьючен!")
+            else:
+                await ctx.send(f"{member.mention} был замьючен на {time} секунд!")
+                await asyncio.sleep(int(time))
+                await member.remove_roles(mute_role)
