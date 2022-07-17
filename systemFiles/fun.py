@@ -1,7 +1,7 @@
+import json
 import random
 import discord
 from discord.ext import commands
-from systemFiles.package import imgUrlNsfw
 
 class Fun(commands.Cog):
     def __init__(self, bot):
@@ -25,15 +25,13 @@ class Fun(commands.Cog):
     # Рандомное фото Хауди Хо
     @commands.command(aliases=['howdy', 'howdyho'])
     async def _howdy(self, ctx):
-        imgUrl = [ "https://i.ibb.co/Rykx1ZJ/1.png", "https://i.ibb.co/FWqhmy5/2.jpg", "https://i.ibb.co/phhGPhk/3.jpg",
-        "https://i.ibb.co/WnDD1z7/4.jpg", "https://i.ibb.co/pX63w3Q/5.jpg", "https://i.ibb.co/tQh4Gx5/image.jpg",
-        "https://i.ibb.co/Jqwyr5Y/9.png", "https://i.ibb.co/nf4VF9J/8.png", "https://i.ibb.co/J5qyBqY/7.png",
-        "https://i.ibb.co/gMw4ss5/6.png"]
+        with open("systemFiles/package.json") as file:
+            data_json = json.load(file)
 
         emb = discord.Embed(title = "Howdy Ho", color=ctx.author.color)
-        emb.set_image(url = random.choice(imgUrl))
+        emb.set_image(url = random.choice(data_json["howdyho"]))
         await ctx.send(embed = emb)
-    
+
 
     # Говорящий бен, но не разговаривает
     @commands.command()
@@ -48,13 +46,16 @@ class Fun(commands.Cog):
                 color=ctx.author.color)
             await ctx.send(embed=embed)
 
-    
-    # Рандомное фото Nsfw 
+
+    # Рандомное фото Nsfw
     @commands.command()
     @commands.is_nsfw()
     async def nsfw(self, ctx):
+        with open("systemFiles/package.json") as file:
+            data_json = json.load(file)
+
         emb = discord.Embed(title = ":underage: NSFW", color=ctx.author.color)
-        emb.set_image(url = random.choice(imgUrlNsfw))
+        emb.set_image(url = random.choice(data_json["nsfw"]))
         await ctx.send(embed = emb)
 
 
