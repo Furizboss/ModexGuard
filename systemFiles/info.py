@@ -30,10 +30,10 @@ class Info(commands.Cog):
         embed.set_thumbnail(url=str(ctx.guild.icon_url))
         await ctx.send(embed=embed)
 
-
     # Информация о ролях пользователя
+
     @commands.command(aliases=['myroles', 'roles'])
-    async def _roles(self, ctx, member:discord.Member = None, guild: discord.Guild = None):
+    async def _roles(self, ctx, member: discord.Member = None, guild: discord.Guild = None):
         if member == None:
             userPrefix = ctx.message.author
         else:
@@ -57,10 +57,10 @@ class Info(commands.Cog):
         embed.set_thumbnail(url=str(userPrefix.avatar_url))
         await ctx.send(embed=embed)
 
-
     # Информация о пользователя
+
     @commands.command(aliases=['user', 'userinfo'])
-    async def _userinfo(self, ctx, member:discord.Member = None, guild: discord.Guild = None):
+    async def _userinfo(self, ctx, member: discord.Member = None, guild: discord.Guild = None):
         if not member:
             member = ctx.message.author
 
@@ -73,7 +73,7 @@ class Info(commands.Cog):
             d = ":crescent_moon: Не активен"
         if t == discord.Status.dnd:
             d = ":no_entry: Не беспокоить"
-    
+
         value1 = member.activity
 
         embed = discord.Embed(
@@ -87,15 +87,16 @@ class Info(commands.Cog):
         embed.set_thumbnail(url=str(member.avatar_url))
         await ctx.send(embed=embed)
 
-
     # Аватарка пользователя
+
     @commands.command()
-    async def avatar(self, ctx, member:discord.Member = None):
+    async def avatar(self, ctx, member: discord.Member = None):
         if member == None:
             userPrefix = ctx.message.author
         else:
             userPrefix = member
 
-        emb = discord.Embed(title = f"Аватарка пользователя {userPrefix.display_name}", color=ctx.author.color)
-        emb.set_image(url = str(userPrefix.avatar_url))
-        await ctx.send(embed = emb)
+        emb = discord.Embed(
+            title=f"Аватарка пользователя {userPrefix.display_name}", color=ctx.author.color)
+        emb.set_image(url=str(userPrefix.avatar_url))
+        await ctx.send(embed=emb)
