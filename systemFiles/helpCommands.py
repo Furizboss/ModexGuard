@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from config import settings
 
+
 class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -9,7 +10,7 @@ class Help(commands.Cog):
     @commands.command(aliases=['help', 'помощь'])
     async def _help(self, ctx, helpCommand=None):
         prefix = settings['prefix']
-        botId = discord.utils.get(ctx.guild.members, id = settings['id'])
+        botId = discord.utils.get(ctx.guild.members, id=settings['id'])
 
         # общий help
         if helpCommand == None or helpCommand == 'help':
@@ -26,9 +27,9 @@ class Help(commands.Cog):
                             f'\n⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
-        
 
         # помощь раздела информации
         elif helpCommand == 'serverinfo' or helpCommand == 'server':
@@ -41,7 +42,8 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'userinfo' or helpCommand == 'user':
@@ -56,7 +58,8 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'roles' or helpCommand == 'myroles':
@@ -70,7 +73,8 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'avatar':
@@ -83,9 +87,9 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
-
 
         # помощь раздела развлечение
         elif helpCommand == 'coin':
@@ -97,7 +101,8 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'howdy' or helpCommand == 'howdyho':
@@ -110,7 +115,8 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'ben':
@@ -122,7 +128,8 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'nsfw':
@@ -135,7 +142,8 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'ping':
@@ -147,9 +155,9 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
-
 
         # помощь раздела Модерирование
         elif helpCommand == 'ban':
@@ -162,7 +170,8 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'kick':
@@ -175,9 +184,10 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
-            
+
         elif helpCommand == 'cls' or helpCommand == 'clear':
             embed = discord.Embed(
                 description=f'**Информация о командe `{prefix}clear`:**\n'
@@ -188,7 +198,8 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'slowmode':
@@ -200,7 +211,8 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
 
         elif helpCommand == 'mute':
@@ -214,9 +226,9 @@ class Help(commands.Cog):
                             f'⠀',
                 color=ctx.author.color)
             embed.set_thumbnail(url=botId.avatar_url)
-            embed.set_footer(text=' by illia841 ©', icon_url = "https://i.ibb.co/0hDpXRf/00.png")
+            embed.set_footer(text=' by illia841 ©',
+                             icon_url="https://i.ibb.co/0hDpXRf/00.png")
             await ctx.send(embed=embed)
-
 
         else:
             await ctx.send('Упс.. Я не могу найти информацию о такой команде')

@@ -2,6 +2,7 @@ import asyncio
 import discord
 from discord.ext import commands
 
+
 class Moder(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -15,43 +16,43 @@ class Moder(commands.Cog):
         else:
             await ctx.channel.purge(limit=int(amount))
 
-    
     # Бан юзеров
+
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    async def ban(self, ctx, member:discord.Member = None, reason = None):
+    async def ban(self, ctx, member: discord.Member = None, reason=None):
         if member == None:
             await ctx.send('Отметьте участника для бана как аргумент')
         else:
             await member.ban(reason=reason)
 
-
     # Кик участников
+
     @commands.command()
     @commands.has_permissions(kick_members=True)
-    async def kick(self, ctx, member:discord.Member = None, reason = None):
+    async def kick(self, ctx, member: discord.Member = None, reason=None):
         if member == None:
             await ctx.send('Отметьте участника для изгнания как аргумент')
         else:
             await member.kick(reason=reason)
             await ctx.send(f'{member} был выгнан с сервера!')
 
-
     # Установка медленного режима
+
     @commands.command()
     @commands.has_permissions(manage_channels=True)
-    async def slowmode(self, ctx, seconds:int = None):
+    async def slowmode(self, ctx, seconds: int = None):
         if seconds == None:
             await ctx.send('Отметьте время медленого режима как аргумент')
         else:
             await ctx.channel.edit(slowmode_delay=seconds)
             await ctx.send(f"Задержка в этом канале установленно на {seconds} секунд!")
 
-
     # Мьют участников
+
     @commands.command()
     @commands.has_permissions(manage_roles=True)
-    async def mute(self, ctx, member:discord.Member = None, time = None):
+    async def mute(self, ctx, member: discord.Member = None, time=None):
         if member == None:
             await ctx.send('Отметьте участника для мьюта как аргумент')
         else:

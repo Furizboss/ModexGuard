@@ -3,6 +3,7 @@ import random
 import discord
 from discord.ext import commands
 
+
 class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -21,48 +22,48 @@ class Fun(commands.Cog):
             color=ctx.author.color)
         await ctx.send(embed=embed)
 
-
     # Рандомное фото Хауди Хо
+
     @commands.command(aliases=['howdy', 'howdyho'])
     async def _howdy(self, ctx):
         with open("systemFiles/package.json") as file:
             data_json = json.load(file)
 
-        emb = discord.Embed(title = "Howdy Ho", color=ctx.author.color)
-        emb.set_image(url = random.choice(data_json["howdyho"]))
-        await ctx.send(embed = emb)
-
+        emb = discord.Embed(title="Howdy Ho", color=ctx.author.color)
+        emb.set_image(url=random.choice(data_json["howdyho"]))
+        await ctx.send(embed=emb)
 
     # Говорящий бен, но не разговаривает
+
     @commands.command()
-    async def ben(self, ctx, Question = None):
+    async def ben(self, ctx, Question=None):
         answer = ['Yes', 'No', 'Ho-ho-ho']
 
         if Question == None:
             await ctx.send('Введите вопрос Бену как аргумент')
         else:
             embed = discord.Embed(
-                description = f'**{random.choice(answer)}**',
+                description=f'**{random.choice(answer)}**',
                 color=ctx.author.color)
             await ctx.send(embed=embed)
 
-
     # Рандомное фото Nsfw
+
     @commands.command()
     @commands.is_nsfw()
     async def nsfw(self, ctx):
         with open("systemFiles/package.json") as file:
             data_json = json.load(file)
 
-        emb = discord.Embed(title = ":underage: NSFW", color=ctx.author.color)
-        emb.set_image(url = random.choice(data_json["nsfw"]))
-        await ctx.send(embed = emb)
-
+        emb = discord.Embed(title=":underage: NSFW", color=ctx.author.color)
+        emb.set_image(url=random.choice(data_json["nsfw"]))
+        await ctx.send(embed=emb)
 
     # Ping - pong
+
     @commands.command()
     async def ping(self, ctx):
         embed = discord.Embed(
-            description = f'**Pong**',
+            description=f'**Pong**',
             color=ctx.author.color)
         await ctx.send(embed=embed)
